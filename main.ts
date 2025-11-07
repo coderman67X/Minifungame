@@ -1,3 +1,7 @@
+info.onCountdownEnd(function () {
+    game.gameOver(true)
+})
+info.startCountdown(60)
 game.setGameOverEffect(false, effects.slash)
 scene.setBackgroundColor(7)
 let mySprite = sprites.create(img`
@@ -42,7 +46,10 @@ let mySprite2 = sprites.create(img`
     `, SpriteKind.Enemy)
 controller.moveSprite(mySprite)
 mySprite2.setPosition(20, 84)
-mySprite2.follow(mySprite, 75)
+mySprite2.follow(mySprite, randint(75, 90))
+forever(function () {
+	
+})
 forever(function () {
     if (mySprite.overlapsWith(mySprite2)) {
         sprites.destroy(mySprite)
@@ -50,15 +57,19 @@ forever(function () {
     }
     if (mySprite.x > 160) {
         mySprite.x = 5
-        mySprite2.follow(mySprite, randint(1, 200))
+        mySprite2.follow(mySprite, randint(10, 200))
+        info.changeCountdownBy(10)
     } else if (mySprite.y > 120) {
         mySprite.y = 5
-        mySprite2.follow(mySprite, randint(1, 200))
+        mySprite2.follow(mySprite, randint(10, 200))
+        info.changeCountdownBy(10)
     } else if (mySprite.y < 0) {
         mySprite.y = 115
-        mySprite2.follow(mySprite, randint(1, 200))
+        mySprite2.follow(mySprite, randint(10, 200))
+        info.changeCountdownBy(10)
     } else if (mySprite.x < 0) {
         mySprite.x = 155
-        mySprite2.follow(mySprite, randint(1, 200))
+        mySprite2.follow(mySprite, randint(10, 200))
+        info.changeCountdownBy(10)
     }
 })
